@@ -3,6 +3,9 @@ A python tool to create truth tables
 
 
 ```python
+import pandas as pd
+from pyTruthTable import * #Import all methods from pyTruthTable
+
 data = {'Hot':[True, True,True, True, False, False, False, False], # 0
         'Wet':[True, True, False, False, True, True, False, False], # 1
         'Rains':[True, False, True, False, True, False, True, False]} # 2
@@ -17,20 +20,7 @@ df
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
+<table class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
