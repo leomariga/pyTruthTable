@@ -1,5 +1,5 @@
 # What is pyTruthTable?
-This library uses Pandas's dataframe to create logical relations between it's columns. E.g. you can call `l_implies(df, n ,m)` that will return a dataframe column with the logical operation "implies" between the column `m` and `n` with `m → n`. The function also create the header of the column joining the name of the columns with the method symbol. 
+This library uses Pandas's dataframe to create logical relations between it's columns. E.g. you can call `l_implies(df, n ,m)` that will return a dataframe column with the logical operation "implies" between the column `m` and `n` (`m → n`). The function also names header of the column joining both columns' name with the operation symbol. 
 
 ## How to use?
 - Download the file pyTruthTable.py in this repository
