@@ -1,0 +1,1 @@
+from pyTruthTable.pyTruthTable import PyTruthTable
