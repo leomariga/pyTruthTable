@@ -1,12 +1,24 @@
 import pandas as pd
-
+import itertools
 
 
 class PyTruthTable:
 
     # Initialize dataframe 
-    def __init__(self, first_df=""):
-        self.table_df = first_df 
+    def __init__(self, names=[], df=pd.DataFrame()):
+        self.table_df = df 
+        if(len(names) > 0):
+            self.table_df = self.generator(names)
+            
+
+
+    # If the sentence is long, put parenthesis
+    def generator(self, names=[]):   
+        table = list(itertools.product([True, False], repeat=len(names)))
+        ddf = pd.DataFrame(table)
+        for i in range(len(names)):
+            ddf = ddf.rename(columns={i: names[i]})
+        return ddf
 
     # If the sentence is long, put parenthesis
     def p(self, st):               # Put parenthesis if necessary
@@ -141,7 +153,9 @@ class PyTruthTable:
 
     def append_df(self, a_dataframe):
         if isinstance(a_dataframe, pd.DataFrame):
+
             self.table_df = self.table_df.join(a_dataframe)
+
         else:
             print("Variável não reconhecida")
 
