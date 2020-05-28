@@ -59,6 +59,48 @@ class PyTruthTable:
         self.spacing = ""
 
     def set_default_symbols(self):
+        """ 
+        Name the new column using the default symbols.
+
+        i.e: When using `and` operation your new column will be called `A ^ B`.
+
+        | Operation | Text           |
+        |-----------|----------------|
+        | implies   | "implies"      |
+        | nimplies  | "not implies"  |
+        | converse  | "converse"     |
+        | nconverse | "not converse" |
+        | not       | "not"          |
+        | and       | "and",         |
+        | or        | "or"           |
+        | nor       | "nor"          |
+        | xor       | "xor"          |
+        | xnor      | "xnor"         |
+        | nand      | "nand"         |
+        | equals    | "equals"       |
+        | nequals   | "not equals"   |
+
+        Example 1:
+      
+        ``` python
+        df = pd.DataFrame([A])
+
+        t_table = ptt.PyTruthTable(df=df)
+
+        t_table.append("or", 0, 0)   # Simple 'or' operation
+        t_table.set_text_symbols()   # Change to text
+        t_table.append("or", 0, 0)   # Same 'or' operation
+
+        t_table.table_df
+        ```
+            
+        |     A | A v A | A or A |
+        |------:|------:|-------:|
+        | True  | True  | True   |
+        | False | False | False  |
+
+        ---
+        """
         self.symbols = {
                         "implies" : "→",
                         "nimplies" : "↛",

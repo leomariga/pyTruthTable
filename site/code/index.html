@@ -1,0 +1,672 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-5.2.2">
+    
+    
+      
+        <title>Code - pyTruthTable</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a2408e81.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pytruthtablepytruthtable" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="pyTruthTable" class="md-header-nav__button md-logo" aria-label="pyTruthTable">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            pyTruthTable
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Code
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="pyTruthTable" class="md-nav__button md-logo" aria-label="pyTruthTable">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    pyTruthTable
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Code
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 9h14V7H3v2m0 4h14v-2H3v2m0 4h14v-2H3v2m16 0h2v-2h-2v2m0-10v2h2V7h-2m0 6h2v-2h-2v2z"/></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Code" class="md-nav__link md-nav__link--active">
+      Code
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pytruthtablepytruthtable" class="md-nav__link">
+    pyTruthTable.pyTruthTable
+  </a>
+  
+    <nav class="md-nav" aria-label="pyTruthTable.pyTruthTable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pytruthtable" class="md-nav__link">
+    PyTruthTable
+  </a>
+  
+    <nav class="md-nav" aria-label="PyTruthTable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set_text_symbols" class="md-nav__link">
+    set_text_symbols
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generator" class="md-nav__link">
+    generator
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pytruthtablepytruthtable" class="md-nav__link">
+    pyTruthTable.pyTruthTable
+  </a>
+  
+    <nav class="md-nav" aria-label="pyTruthTable.pyTruthTable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pytruthtable" class="md-nav__link">
+    PyTruthTable
+  </a>
+  
+    <nav class="md-nav" aria-label="PyTruthTable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set_text_symbols" class="md-nav__link">
+    set_text_symbols
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generator" class="md-nav__link">
+    generator
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                  <h1>Code</h1>
+                
+                <p><a name=".pyTruthTable.pyTruthTable"></a></p>
+<h2 id="pytruthtablepytruthtable">pyTruthTable.pyTruthTable</h2>
+<p><a name=".pyTruthTable.pyTruthTable.PyTruthTable"></a></p>
+<h3 id="pytruthtable">PyTruthTable</h3>
+<pre><code class="python">class PyTruthTable():
+ |  PyTruthTable(names=[], df=pd.DataFrame())
+</code></pre>
+
+<p>The constructor initialize a Truth Table with a list of <code>names</code> or with a custom dataframe.</p>
+<p>Initializing with a list of <code>names</code> means generating automatically all
+possible combination of <code>True</code> and <code>False</code></p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>names</code>: Name of the columns.</li>
+<li><code>df</code>: Initial Pandas' dataframe.</li>
+</ul>
+<p><strong>Raises</strong>:</p>
+<ul>
+<li><code>UserWarning</code>: If the initial <code>df</code> and <code>names</code> are specified simultaneously,
+the table generation is ignored due to possible table dimention conflicts. Only the
+initial dataframe is used.</li>
+</ul>
+<p>Example</p>
+<pre><code class="python">t_table = ptt.PyTruthTable([&quot;A&quot;, &quot;B&quot;, &quot;C&quot;])
+t_table.table_df
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="right">A</th>
+<th align="right">B</th>
+<th align="right">C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">True</td>
+<td align="right">True</td>
+<td align="right">True</td>
+</tr>
+<tr>
+<td align="right">True</td>
+<td align="right">True</td>
+<td align="right">False</td>
+</tr>
+<tr>
+<td align="right">True</td>
+<td align="right">False</td>
+<td align="right">True</td>
+</tr>
+<tr>
+<td align="right">True</td>
+<td align="right">False</td>
+<td align="right">False</td>
+</tr>
+<tr>
+<td align="right">False</td>
+<td align="right">True</td>
+<td align="right">True</td>
+</tr>
+<tr>
+<td align="right">False</td>
+<td align="right">True</td>
+<td align="right">False</td>
+</tr>
+<tr>
+<td align="right">False</td>
+<td align="right">False</td>
+<td align="right">True</td>
+</tr>
+<tr>
+<td align="right">False</td>
+<td align="right">False</td>
+<td align="right">False</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><a name=".pyTruthTable.pyTruthTable.PyTruthTable.set_text_symbols"></a></p>
+<h4 id="set_text_symbols">set_text_symbols</h4>
+<pre><code class="python"> | set_text_symbols()
+</code></pre>
+
+<p>Name the new column using the operation name instead of symbol.</p>
+<p>i.e: When using <code>and</code> operation your new column will be called <code>A and B</code> instead of <code>A ^ B</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Text</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>implies</td>
+<td>"implies"</td>
+</tr>
+<tr>
+<td>nimplies</td>
+<td>"not implies"</td>
+</tr>
+<tr>
+<td>converse</td>
+<td>"converse"</td>
+</tr>
+<tr>
+<td>nconverse</td>
+<td>"not converse"</td>
+</tr>
+<tr>
+<td>not</td>
+<td>"not"</td>
+</tr>
+<tr>
+<td>and</td>
+<td>"and",</td>
+</tr>
+<tr>
+<td>or</td>
+<td>"or"</td>
+</tr>
+<tr>
+<td>nor</td>
+<td>"nor"</td>
+</tr>
+<tr>
+<td>xor</td>
+<td>"xor"</td>
+</tr>
+<tr>
+<td>xnor</td>
+<td>"xnor"</td>
+</tr>
+<tr>
+<td>nand</td>
+<td>"nand"</td>
+</tr>
+<tr>
+<td>equals</td>
+<td>"equals"</td>
+</tr>
+<tr>
+<td>nequals</td>
+<td>"not equals"</td>
+</tr>
+</tbody>
+</table>
+<p>Example 1:</p>
+<pre><code class="python">df = pd.DataFrame([A])
+
+t_table = ptt.PyTruthTable(df=df)
+
+t_table.append(&quot;or&quot;, 0, 0)   # Simple 'or' operation
+t_table.set_text_symbols()   # Change to text
+t_table.append(&quot;or&quot;, 0, 0)   # Same 'or' operation
+
+t_table.table_df
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="right">A</th>
+<th align="right">A v A</th>
+<th align="right">A or A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">True</td>
+<td align="right">True</td>
+<td align="right">True</td>
+</tr>
+<tr>
+<td align="right">False</td>
+<td align="right">False</td>
+<td align="right">False</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><a name=".pyTruthTable.pyTruthTable.PyTruthTable.generator"></a></p>
+<h4 id="generator">generator</h4>
+<pre><code class="python"> | generator(names=[])
+</code></pre>
+
+<p>Generate a combination of <code>True</code> and <code>False</code> columns given a list of <code>names</code>.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>names</code>: Name of the columns.</li>
+</ul>
+<p><strong>Returns</strong>:</p>
+<p>A dataframe with a binary combination using the list <code>names</code> .</p>
+<p>Example 1:</p>
+<pre><code class="python">t_table = ptt.PyTruthTable()
+t_table.generator([&quot;First&quot;, &quot;Second&quot;])
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="right">First</th>
+<th align="right">Second</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">True</td>
+<td align="right">True</td>
+</tr>
+<tr>
+<td align="right">True</td>
+<td align="right">False</td>
+</tr>
+<tr>
+<td align="right">False</td>
+<td align="right">True</td>
+</tr>
+<tr>
+<td align="right">False</td>
+<td align="right">False</td>
+</tr>
+</tbody>
+</table>
+<p>Example 2:</p>
+<pre><code class="python">t_table = ptt.PyTruthTable()
+t_table.generator([&quot;First&quot;, &quot;Second&quot;, &quot;Third&quot;])
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="right">First</th>
+<th align="right">Second</th>
+<th align="right">Third</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">True</td>
+<td align="right">True</td>
+<td align="right">True</td>
+</tr>
+<tr>
+<td align="right">True</td>
+<td align="right">True</td>
+<td align="right">False</td>
+</tr>
+<tr>
+<td align="right">True</td>
+<td align="right">False</td>
+<td align="right">True</td>
+</tr>
+<tr>
+<td align="right">True</td>
+<td align="right">False</td>
+<td align="right">False</td>
+</tr>
+<tr>
+<td align="right">False</td>
+<td align="right">True</td>
+<td align="right">True</td>
+</tr>
+<tr>
+<td align="right">False</td>
+<td align="right">True</td>
+<td align="right">False</td>
+</tr>
+<tr>
+<td align="right">False</td>
+<td align="right">False</td>
+<td align="right">True</td>
+</tr>
+<tr>
+<td align="right">False</td>
+<td align="right">False</td>
+<td align="right">False</td>
+</tr>
+</tbody>
+</table>
+<hr />
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href=".." title="Home" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Home
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.d710d30a.min.js"></script>
+      <script src="../assets/javascripts/bundle.5f27aba8.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.27c6a5e6.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
