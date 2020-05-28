@@ -81,6 +81,22 @@ class PyTruthTable:
 
         i.e: When using `and` operation your new column will be called `A and B` instead of `A ^ B`.
 
+        | Operation | Text           |
+        |-----------|----------------|
+        | implies   | "implies"      |
+        | nimplies  | "not implies"  |
+        | converse  | "converse"     |
+        | nconverse | "not converse" |
+        | not       | "not"          |
+        | and       | "and",         |
+        | or        | "or"           |
+        | nor       | "nor"          |
+        | xor       | "xor"          |
+        | xnor      | "xnor"         |
+        | nand      | "nand"         |
+        | equals    | "equals"       |
+        | nequals   | "not equals"   |
+
         Example 1:
       
         ``` python
@@ -117,7 +133,6 @@ class PyTruthTable:
                         "equals" : "equals",
                         "nequals" : "not equals"
                         }
-
 
 
     def generator(self, names=[]):   
