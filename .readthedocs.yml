@@ -9,7 +9,7 @@ version: 2
 #mkdocs:
 #  configuration: mkdocs.yml
 mkdocs:
-  configuration: build.mkdocs.yml
+  configuration: mkdocs.yml
   fail_on_warning: false
 
 # Optionally build your docs in additional formats such as PDF and ePub
