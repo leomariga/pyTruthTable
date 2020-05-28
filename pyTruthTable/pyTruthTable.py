@@ -4,16 +4,53 @@ import itertools
 
 class PyTruthTable:
 
+    """ 
+    
 
-    # Initialize dataframe 
+    The constructor initialize a Truth Table with a list of `names` or with a custom dataframe.
+
+        Initializing with a list of `names` means generating automatically all
+        possible combination of `True` and `False`
+
+
+
+      :param names: Name of the columns.
+      :param df: Initial Pandas' dataframe.
+      :raises UserWarning: If the initial `df` and `names` are specified simultaneously, 
+      the table generation is ignored due to possible table dimention conflicts. Only the
+      initial dataframe is used. 
+
+      Example
+      
+            ``` python
+            t_table = ptt.PyTruthTable(["A", "B", "C"])
+            t_table.table_df
+            ```
+            
+            |     A |     B |     C |
+            |------:|------:|------:|
+            | True  | True  | True  |
+            | True  | True  | False |
+            | True  | False | True  |
+            | True  | False | False |
+            | False | True  | True  |
+            | False | True  | False |
+            | False | False | True  |
+            | False | False | False |
+
+    ---
+    """
     def __init__(self, names=[], df=pd.DataFrame()):
 
         self.set_default_symbols()
         self.set_default_spacing()
         self.table_df = df 
-        print(len(names))
-        if(len(names) > 0):
-            self.table_df = self.generator(names)
+        if(df.equals(pd.DataFrame())):  
+            if(len(names) > 0):
+                self.table_df = self.generator(names)
+        else:
+            if(len(names) > 0):
+                raise UserWarning('Initial dataframe already specified, ignoring list of names.')
 
     def set_default_spacing(self):
         self.spacing = " "
@@ -56,8 +93,48 @@ class PyTruthTable:
                         }
 
 
-    # If the sentence is long, put parenthesis
+
     def generator(self, names=[]):   
+        """ 
+        Generate a combination of `True` and `False` columns given a list of `names`.
+
+        :param names: Name of the columns.
+        :returns:  A dataframe with a binary combination using the list `names` .
+
+        Example 1:
+      
+            ``` python
+            t_table = ptt.PyTruthTable()
+            t_table.generator(["First", "Second"])
+            ```
+            
+            | First | Second |
+            |------:|-------:|
+            | True  | True   |
+            | True  | False  |
+            | False | True   |
+            | False | False  |
+
+        Example 2:
+      
+            ``` python
+            t_table = ptt.PyTruthTable()
+            t_table.generator(["First", "Second", "Third"])
+            ```
+            
+            | First | Second | Third |
+            |------:|-------:|------:|
+            | True  | True   | True  |
+            | True  | True   | False |
+            | True  | False  | True  |
+            | True  | False  | False |
+            | False | True   | True  |
+            | False | True   | False |
+            | False | False  | True  |
+            | False | False  | False |
+
+        ---
+        """
         table = list(itertools.product([True, False], repeat=len(names)))
         ddf = pd.DataFrame(table)
         for i in range(len(names)):
