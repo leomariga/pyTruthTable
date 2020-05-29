@@ -215,3 +215,77 @@ t_table.generator(["First", "Second", "Third"])
 
 ---
 
+<a name=".pyTruthTable.pyTruthTable.PyTruthTable.append"></a>
+#### append
+
+```python
+ | append(operation, a_in, b_in="", newcolumn_name="")
+```
+
+Make a logical `operation` with column `a_in` and `b_in`. The new column will automatically append to the main dataframe.
+The new column name can be specified with `newcolumn_name`.
+
+`a_in` and `b_in` can be either a column name or number.
+
+
+**Arguments**:
+
+- `operation`: Logical operation to be executed
+- `a_in`: First column. (Left side)
+- `b_in`: Second column. (Right side)
+
+**Raises**:
+
+- `NameError`: Input column does not exist.
+- `NameError`: Operation does not exist.
+- `ValueError`: The operation needs `b_in` to also be specified
+
+---
+
+<a name=".pyTruthTable.pyTruthTable.PyTruthTable.append_df"></a>
+#### append\_df
+
+```python
+ | append_df(a_dataframe)
+```
+
+Append a custom dataframe to your truth table. The number of rows of `a_dataframe` must always match the current truth table.
+
+**Arguments**:
+
+- `a_dataframe`: Dataframe to append
+
+**Raises**:
+
+- `TypeError`: The parameter should be a dataframe
+- `RuntimeError`: Number of rows of dataframe must match with current truth table
+
+---
+
+<a name=".pyTruthTable.pyTruthTable.PyTruthTable.column"></a>
+#### column
+
+```python
+ | column(operation, a_in, b_in="", newcolumn_name="")
+```
+
+Return a column of logical `operation` with column `a_in` and `b_in`. The new column will NOT append to the main dataframe.
+The new column name can be specified with `newcolumn_name`.
+
+`a_in` and `b_in` can be either a column name or number.
+
+
+**Arguments**:
+
+- `operation`: Logical operation to be executed
+- `a_in`: First column. (Left side)
+- `b_in`: Second column. (Right side)
+
+**Raises**:
+
+- `NameError`: Input column does not exist.
+- `NameError`: Operation does not exist.
+- `ValueError`: The operation needs `b_in` to also be specified
+
+---
+

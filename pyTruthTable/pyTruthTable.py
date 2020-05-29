@@ -1,5 +1,6 @@
 import pandas as pd
 import itertools
+import warnings
 
 
 class PyTruthTable:
@@ -50,7 +51,7 @@ class PyTruthTable:
                 self.table_df = self.generator(names)
         else:
             if(len(names) > 0):
-                raise UserWarning('Initial dataframe already specified, ignoring list of names.')
+                warnings.warn("Initial dataframe already specified, ignoring list of names.")
 
     def set_default_spacing(self):
         """ 
@@ -243,119 +244,158 @@ class PyTruthTable:
     def implies(self, a, b):       # Definition of implication
         return (~a) | b
 
-    def nimplies(self, a, b):       # Definition of implication
+    def nimplies(self, a, b):      
         return a & (~b)
 
+    def verify_existence(self, nomecoluna):      
+        if nomecoluna in self.table_df.columns:
+            raise NameError('Column name already exists. Please, specify another name.')
+
     
-    def l_implies(self, a, b, nomecoluna): # input the name of the column or the index
+    def l_implies(self, a, b, nomecoluna): 
         if(nomecoluna==""):
             nomecoluna = self.p(self.table_df.columns[a]) + self.spacing + self.symbols["implies"] + self.spacing + self.p(self.table_df.columns[b])
 
+        self.verify_existence(nomecoluna)
         return pd.DataFrame({nomecoluna:self.implies(self.table_df.iloc[:,a], self.table_df.iloc[:,b])})
 
     
-    def l_nimplies(self, a, b, nomecoluna): # input the name of the column or the index
+    def l_nimplies(self, a, b, nomecoluna):
         if(nomecoluna==""):
             nomecoluna = self.p(self.table_df.columns[a]) + self.spacing + self.symbols["nimplies"] + self.spacing + self.p(self.table_df.columns[b])
 
+        self.verify_existence(nomecoluna)
         return pd.DataFrame({nomecoluna:self.nimplies(self.table_df.iloc[:,a], self.table_df.iloc[:,b])})
 
     
-    def l_not(self, a, nomecoluna):        # input the name of the column or the index
+    def l_not(self, a, nomecoluna): 
         if(nomecoluna==""):
             nomecoluna = self.symbols["not"] + self.spacing+ self.p(self.table_df.columns[a])
 
+        self.verify_existence(nomecoluna)
         return pd.DataFrame({nomecoluna:(~self.table_df.iloc[:,a])})
 
     
-    def l_and(self, a, b, nomecoluna):     # input the name of the column or the index
+    def l_and(self, a, b, nomecoluna):
         if(nomecoluna==""):
             nomecoluna = self.p(self.table_df.columns[a])+ self.spacing + self.symbols["and"] + self.spacing + self.p(self.table_df.columns[b])
 
+        self.verify_existence(nomecoluna)
         return pd.DataFrame({nomecoluna:(self.table_df.iloc[:,a] & self.table_df.iloc[:,b])})
 
     
-    def l_nand(self, a, b, nomecoluna):     # input the name of the column or the index
+    def l_nand(self, a, b, nomecoluna):
         if(nomecoluna==""):
             if(self.symbols["nand"] == ""):
                 nomecoluna = self.symbols["not"]+ self.spacing+"("+self.p(self.table_df.columns[a])+ self.spacing + self.symbols["and"] + self.spacing + self.p(self.table_df.columns[b])+")"
             else:
                 nomecoluna = self.p(self.table_df.columns[a])+ self.spacing + self.symbols["nand"] + self.spacing + self.p(self.table_df.columns[b])
+
+        self.verify_existence(nomecoluna)
         return pd.DataFrame({nomecoluna:~(self.table_df.iloc[:,a] & self.table_df.iloc[:,b])})
 
     
-    def l_or(self, a, b, nomecoluna):      # input the name of the column or the index
+    def l_or(self, a, b, nomecoluna):
         if(nomecoluna==""):
             nomecoluna = self.p(self.table_df.columns[a])+ self.spacing + self.symbols["or"] + self.spacing + self.p(self.table_df.columns[b])
 
+        self.verify_existence(nomecoluna)
         return pd.DataFrame({nomecoluna:(self.table_df.iloc[:,a] | self.table_df.iloc[:,b])})
 
     
-    def l_nor(self, a, b, nomecoluna):      # input the name of the column or the index
+    def l_nor(self, a, b, nomecoluna):
         if(nomecoluna==""):
             if(self.symbols["nor"] == ""):
                 nomecoluna = self.symbols["not"]+ self.spacing+"("+self.p(self.table_df.columns[a])+ self.spacing + self.symbols["or"] + self.spacing + self.p(self.table_df.columns[b]) + ")"
             else:
                 nomecoluna = self.p(self.table_df.columns[a])+ self.spacing + self.symbols["nor"] + self.spacing + self.p(self.table_df.columns[b])
 
+        self.verify_existence(nomecoluna)
         return pd.DataFrame({nomecoluna:~(self.table_df.iloc[:,a] | self.table_df.iloc[:,b])})
 
     
-    def l_xor(self, a, b, nomecoluna):      # input the name of the column or the index
+    def l_xor(self, a, b, nomecoluna):
         if(nomecoluna==""):
             nomecoluna = self.p(self.table_df.columns[a])+ self.spacing + self.symbols["xor"] + self.spacing + self.p(self.table_df.columns[b])
 
+        self.verify_existence(nomecoluna)
         return pd.DataFrame({nomecoluna:(self.table_df.iloc[:,a] ^ self.table_df.iloc[:,b])})
 
     
-    def l_xnor(self, a, b, nomecoluna):      # input the name of the column or the index
+    def l_xnor(self, a, b, nomecoluna):
         if(nomecoluna==""):
             if(self.symbols["xnor"] == ""):
                 nomecoluna = self.symbols["not"]+ self.spacing+"("+self.p(self.table_df.columns[a])+ self.spacing + self.symbols["xor"] + self.spacing + self.p(self.table_df.columns[b])+")"
             else:
                 nomecoluna = self.p(self.table_df.columns[a])+ self.spacing + self.symbols["xnor"] + self.spacing + self.p(self.table_df.columns[b])
 
+        self.verify_existence(nomecoluna)
         return pd.DataFrame({nomecoluna:~(self.table_df.iloc[:,a] ^ self.table_df.iloc[:,b])})
 
     
-    def l_equals(self, a, b, nomecoluna):      # input the name of the column or the index
+    def l_equals(self, a, b, nomecoluna):
         if(nomecoluna==""):
             nomecoluna = self.p(self.table_df.columns[a])+ self.spacing + self.symbols["equals"] + self.spacing + self.p(self.table_df.columns[b])
         return pd.DataFrame({nomecoluna:(self.table_df.iloc[:,a] == self.table_df.iloc[:,b])})
 
-    def l_nequals(self, a, b, nomecoluna):      # input the name of the column or the index
+    def l_nequals(self, a, b, nomecoluna):
         if(nomecoluna==""):
             nomecoluna = self.p(self.table_df.columns[a])+ self.spacing + self.symbols["nequals"] + self.spacing + self.p(self.table_df.columns[b])
+        self.verify_existence(nomecoluna)
         return pd.DataFrame({nomecoluna:~(self.table_df.iloc[:,a] == self.table_df.iloc[:,b])})
 
     
-    def l_converse(self, a, b, nomecoluna):      # input the name of the column or the index
+    def l_converse(self, a, b, nomecoluna):
         if(nomecoluna==""):
             nomecoluna = self.p(self.table_df.columns[a])+ self.spacing + self.symbols["converse"] + self.spacing + self.p(self.table_df.columns[b])
+        self.verify_existence(nomecoluna)
         return pd.DataFrame({nomecoluna:self.implies(self.table_df.iloc[:,b], self.table_df.iloc[:,a])})
 
         
-    def l_nconverse(self, a, b, nomecoluna):      # input the name of the column or the index
+    def l_nconverse(self, a, b, nomecoluna):
         if(nomecoluna==""):
             nomecoluna = self.p(self.table_df.columns[a])+ self.spacing + self.symbols["nconverse"] + self.spacing + self.p(self.table_df.columns[b])
+        self.verify_existence(nomecoluna)
         return pd.DataFrame({nomecoluna:self.nimplies(self.table_df.iloc[:,b], self.table_df.iloc[:,a])})
 
     
     def append(self, operation, a_in, b_in="", newcolumn_name=""):
+        """ 
+        Make a logical `operation` with column `a_in` and `b_in`. The new column will automatically append to the main dataframe. 
+        The new column name can be specified with `newcolumn_name`.
+
+        `a_in` and `b_in` can be either a column name or number.
+
+
+          :param operation: Logical operation to be executed
+          :param a_in: First column. (Left side)
+          :param b_in: Second column. (Right side)
+          :raises NameError: Input column does not exist. 
+          :raises NameError: Operation does not exist. 
+          :raises ValueError: The operation needs `b_in` to also be specified
+
+        ---
+        """
         a = ""
         b = ""
         if isinstance(a_in, str):
             a = self.table_df.columns.get_loc(a_in)
+            if(a == False):
+                raise NameError('First column does not exist.')
         else:
             a = a_in
 
         if(b_in != ""):
             if isinstance(b_in, str):
                 b = self.table_df.columns.get_loc(b_in)
+                if(b == False):
+                    raise NameError('Second column does not exist.')
             else:
                 b = b_in
         else:
             b = b_in
+            if (operation != "not"):
+                raise ValueError('Operation requires a second column to be defined.')
                 
         if(operation == "implies"):
             self.table_df = self.table_df.join(self.l_implies(a, b, newcolumn_name))
@@ -384,33 +424,67 @@ class PyTruthTable:
         elif(operation == "nequals"):
             self.table_df = self.table_df.join(self.l_nequals(a, b, newcolumn_name))
         else:
-            print("Operation does not exist")
+            raise NameError('Operation does not exist.')
         return self.table_df
 
     def append_df(self, a_dataframe):
-        if isinstance(a_dataframe, pd.DataFrame):
+        """ 
+        Append a custom dataframe to your truth table. The number of rows of `a_dataframe` must always match the current truth table.
 
-            self.table_df = self.table_df.join(a_dataframe)
+          :param a_dataframe: Dataframe to append
+          :raises TypeError: The parameter should be a dataframe
+          :raises RuntimeError: Number of rows of dataframe must match with current truth table
+
+        ---
+        """
+        if isinstance(a_dataframe, pd.DataFrame):
+            if(len(self.table_df.index) == len(a_dataframe.index)):
+                self.table_df = self.table_df.join(a_dataframe)
+            else:
+                raise RuntimeError('Number of rows of dataframe must match with current truth table')
+                
 
         else:
-            print("Variável não reconhecida")
+            raise TypeError('The parameter should be a dataframe')
 
-        # Append and return the dataframe with the operation
+
     def column(self, operation, a_in, b_in="", newcolumn_name=""):
+        """ 
+        Return a column of logical `operation` with column `a_in` and `b_in`. The new column will NOT append to the main dataframe. 
+        The new column name can be specified with `newcolumn_name`.
+
+        `a_in` and `b_in` can be either a column name or number.
+
+
+          :param operation: Logical operation to be executed
+          :param a_in: First column. (Left side)
+          :param b_in: Second column. (Right side)
+          :raises NameError: Input column does not exist. 
+          :raises NameError: Operation does not exist. 
+          :raises ValueError: The operation needs `b_in` to also be specified
+
+        ---
+        """
         a = ""
         b = ""
         if isinstance(a_in, str):
             a = self.table_df.columns.get_loc(a_in)
+            if(a == False):
+                raise NameError('First column does not exist.')
         else:
             a = a_in
 
         if(b_in != ""):
             if isinstance(b_in, str):
                 b = self.table_df.columns.get_loc(b_in)
+                if(b == False):
+                    raise NameError('Second column does not exist.')
             else:
                 b = b_in
         else:
             b = b_in
+            if (operation != "not"):
+                raise ValueError('Operation requires a second column to be defined.')
 
         if(operation == "implies"):
             return self.l_implies(a, b, newcolumn_name)
@@ -439,5 +513,4 @@ class PyTruthTable:
         elif(operation == "nequals"):
             return self.l_nequals(a, b, newcolumn_name)
         else:
-            print("Operation does not exist")
-            return pd.DataFrame()
+            raise NameError('Operation does not exist.')

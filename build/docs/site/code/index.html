@@ -252,6 +252,27 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#append" class="md-nav__link">
+    append
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#append_df" class="md-nav__link">
+    append_df
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#column" class="md-nav__link">
+    column
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -339,6 +360,27 @@
           <li class="md-nav__item">
   <a href="#generator" class="md-nav__link">
     generator
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#append" class="md-nav__link">
+    append
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#append_df" class="md-nav__link">
+    append_df
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#column" class="md-nav__link">
+    column
   </a>
   
 </li>
@@ -766,6 +808,64 @@ t_table.generator([&quot;First&quot;, &quot;Second&quot;, &quot;Third&quot;])
 </tr>
 </tbody>
 </table>
+<hr />
+<p><a name=".pyTruthTable.pyTruthTable.PyTruthTable.append"></a></p>
+<h4 id="append">append</h4>
+<pre><code class="python"> | append(operation, a_in, b_in=&quot;&quot;, newcolumn_name=&quot;&quot;)
+</code></pre>
+
+<p>Make a logical <code>operation</code> with column <code>a_in</code> and <code>b_in</code>. The new column will automatically append to the main dataframe.
+The new column name can be specified with <code>newcolumn_name</code>.</p>
+<p><code>a_in</code> and <code>b_in</code> can be either a column name or number.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>operation</code>: Logical operation to be executed</li>
+<li><code>a_in</code>: First column. (Left side)</li>
+<li><code>b_in</code>: Second column. (Right side)</li>
+</ul>
+<p><strong>Raises</strong>:</p>
+<ul>
+<li><code>NameError</code>: Input column does not exist.</li>
+<li><code>NameError</code>: Operation does not exist.</li>
+<li><code>ValueError</code>: The operation needs <code>b_in</code> to also be specified</li>
+</ul>
+<hr />
+<p><a name=".pyTruthTable.pyTruthTable.PyTruthTable.append_df"></a></p>
+<h4 id="append_df">append_df</h4>
+<pre><code class="python"> | append_df(a_dataframe)
+</code></pre>
+
+<p>Append a custom dataframe to your truth table. The number of rows of <code>a_dataframe</code> must always match the current truth table.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>a_dataframe</code>: Dataframe to append</li>
+</ul>
+<p><strong>Raises</strong>:</p>
+<ul>
+<li><code>TypeError</code>: The parameter should be a dataframe</li>
+<li><code>RuntimeError</code>: Number of rows of dataframe must match with current truth table</li>
+</ul>
+<hr />
+<p><a name=".pyTruthTable.pyTruthTable.PyTruthTable.column"></a></p>
+<h4 id="column">column</h4>
+<pre><code class="python"> | column(operation, a_in, b_in=&quot;&quot;, newcolumn_name=&quot;&quot;)
+</code></pre>
+
+<p>Return a column of logical <code>operation</code> with column <code>a_in</code> and <code>b_in</code>. The new column will NOT append to the main dataframe.
+The new column name can be specified with <code>newcolumn_name</code>.</p>
+<p><code>a_in</code> and <code>b_in</code> can be either a column name or number.</p>
+<p><strong>Arguments</strong>:</p>
+<ul>
+<li><code>operation</code>: Logical operation to be executed</li>
+<li><code>a_in</code>: First column. (Left side)</li>
+<li><code>b_in</code>: Second column. (Right side)</li>
+</ul>
+<p><strong>Raises</strong>:</p>
+<ul>
+<li><code>NameError</code>: Input column does not exist.</li>
+<li><code>NameError</code>: Operation does not exist.</li>
+<li><code>ValueError</code>: The operation needs <code>b_in</code> to also be specified</li>
+</ul>
 <hr />
                 
               
