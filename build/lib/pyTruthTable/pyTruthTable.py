@@ -236,7 +236,7 @@ class PyTruthTable:
 
     
     def p(self, st):               # Put parenthesis if necessary
-        if(len(st) >3):
+        if(len(st) >1):
             st = "("+ st +")"
         return st
 
@@ -379,18 +379,16 @@ class PyTruthTable:
         a = ""
         b = ""
         if isinstance(a_in, str):
-            if a_in in self.table_df:
-                a = self.table_df.columns.get_loc(a_in)
-            else:
+            a = self.table_df.columns.get_loc(a_in)
+            if(a == False):
                 raise NameError('First column does not exist.')
         else:
             a = a_in
 
         if(b_in != ""):
             if isinstance(b_in, str):
-                if b_in in self.table_df:
-                    b = self.table_df.columns.get_loc(b_in)
-                else:
+                b = self.table_df.columns.get_loc(b_in)
+                if(b == False):
                     raise NameError('Second column does not exist.')
             else:
                 b = b_in
@@ -470,18 +468,16 @@ class PyTruthTable:
         a = ""
         b = ""
         if isinstance(a_in, str):
-            if a_in in self.table_df:
-                a = self.table_df.columns.get_loc(a_in)
-            else:
+            a = self.table_df.columns.get_loc(a_in)
+            if(a == False):
                 raise NameError('First column does not exist.')
         else:
             a = a_in
 
         if(b_in != ""):
             if isinstance(b_in, str):
-                if b_in in self.table_df:
-                    b = self.table_df.columns.get_loc(b_in)
-                else:
+                b = self.table_df.columns.get_loc(b_in)
+                if(b == False):
                     raise NameError('Second column does not exist.')
             else:
                 b = b_in

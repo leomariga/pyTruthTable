@@ -194,8 +194,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-to-use" class="md-nav__link">
-    How to use?
+  <a href="#installation" class="md-nav__link">
+    Installation
   </a>
   
 </li>
@@ -272,8 +272,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-to-use" class="md-nav__link">
-    How to use?
+  <a href="#installation" class="md-nav__link">
+    Installation
   </a>
   
 </li>
@@ -321,93 +321,98 @@
                   
                 
                 
-                <h1 id="what-is-pytruthtable">What is pyTruthTable?</h1>
-<p>This library uses Pandas's dataframe to create logical relations between it's columns. E.g. you can call <code>l_implies(df, n ,m)</code> that will return a dataframe column with the logical operation "implies" between the column <code>m</code> and <code>n</code> (<code>m → n</code>). The function also names header of the column joining both columns' name with the operation symbol. </p>
-<h2 id="how-to-use">How to use?</h2>
-<ul>
-<li>Download the file pyTruthTable.py in this repository</li>
-<li>Import the methods using:</li>
-</ul>
-<pre><code class="python">from pyTruthTable import * #Import all methods from pyTruthTable
+                <div align="center">
+  <img src="https://raw.githubusercontent.com/leomariga/pyTruthTable/master/doc/logo.png"><br>
+</div>
+
+<hr />
+<h1 id="what-is-pytruthtable">What is pyTruthTable?</h1>
+<p><strong><em>pyTruthTable</em></strong> is a library that uses Pandas' dataframe to create logical relations between it's elements. The library provides a big set of operations and is highly customizible. The user specify the inputs for the operation and a new column is created automaticaly.</p>
+<h2 id="installation">Installation</h2>
+<pre><code>pip3 install pyTruthTable
 </code></pre>
 
 <h2 id="examples">Examples</h2>
 <h3 id="example-1">Example 1</h3>
-<pre><code class="python">import pandas as pd
-from pyTruthTable import * #Import all methods from pyTruthTable
+<pre><code class="python">import pyTruthTable as ptt
 
-# intialise firs columns.
-df = pd.DataFrame({'A':[True, True, False, False],
-                   'B':[True, False, True, False]})
+# Intialise first columns.
+tt = ptt.PyTruthTable([&quot;Hot&quot;, &quot;Wet&quot;, &quot;Rains&quot;])
 
-# Create other collumns of the dataframe calling methods
-df = df.join(l_implies(df, 0 ,1)) # Thrid   column: a-&gt;b
-df = df.join(l_not(df, 1))        # Forth   column: not b
-df = df.join(l_and(df, 0, 1))     # Fith    column: a and b
-df = df.join(l_or(df, 0, 1))      # Sixth   column: a or b
-df = df.join(l_equals(df, 4, 5))  # Seventh column: fith column &lt;-&gt; sixth column
-print(df)
+# Append new column with specified operation
+tt.append(&quot;and&quot;, &quot;Hot&quot;, &quot;Wet&quot;)
+tt.append(&quot;implies&quot;, 3, &quot;Rains&quot;)
 </code></pre>
 
-<div>
-<table class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>A</th>
-      <th>B</th>
-      <th>A → B</th>
-      <th>¬B</th>
-      <th>A ^ B</th>
-      <th>A ∨ B</th>
-      <th>(A ^ B) ↔ (A ∨ B)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>True</td>
-      <td>True</td>
-      <td>True</td>
-      <td>False</td>
-      <td>True</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>True</td>
-      <td>False</td>
-      <td>False</td>
-      <td>True</td>
-      <td>False</td>
-      <td>True</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>False</td>
-      <td>True</td>
-      <td>True</td>
-      <td>False</td>
-      <td>False</td>
-      <td>True</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>False</td>
-      <td>False</td>
-      <td>True</td>
-      <td>True</td>
-      <td>False</td>
-      <td>False</td>
-      <td>True</td>
-    </tr>
-  </tbody>
+<table>
+<thead>
+<tr>
+<th>Hot</th>
+<th>Wet</th>
+<th>Rains</th>
+<th>Hot ^ Wet</th>
+<th>(Hot ^ Wet) → (Rains)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+<td>True</td>
+</tr>
+<tr>
+<td>True</td>
+<td>True</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+</tr>
+<tr>
+<td>True</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr>
+<td>False</td>
+<td>True</td>
+<td>True</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+<td>False</td>
+<td>True</td>
+</tr>
+<tr>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>False</td>
+<td>True</td>
+</tr>
+</tbody>
 </table>
-</div>
-
 <h3 id="example-2">Example 2</h3>
 <pre><code class="python">import pandas as pd
 from pyTruthTable import * #Import all methods from pyTruthTable

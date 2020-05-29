@@ -1,0 +1,8 @@
+README.md
+setup.py
+pyTruthTable/__init__.py
+pyTruthTable/pyTruthTable.py
+pyTruthTable.egg-info/PKG-INFO
+pyTruthTable.egg-info/SOURCES.txt
+pyTruthTable.egg-info/dependency_links.txt
+pyTruthTable.egg-info/top_level.txt
