@@ -1,5 +1,5 @@
 Inline-style: 
-![alt text](/docs/logo.png "Logo")
+![Logo(https://github.com/leomariga/pyTruthTable/blob/master/doc/logo.png "Logo")
 
 
 # What is pyTruthTable?
