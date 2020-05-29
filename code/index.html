@@ -15,12 +15,18 @@
     
     
       
-        <title>Code - My Project</title>
+        <title>Code - pyTruthTable</title>
       
     
     
       <link rel="stylesheet" href="../assets/stylesheets/main.a2408e81.min.css">
       
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a46bcfb3.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="">
       
     
     
@@ -40,7 +46,10 @@
   </head>
   
   
-    <body dir="ltr">
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="black" data-md-color-accent="black">
   
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -59,7 +68,7 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid" aria-label="Header">
-    <a href=".." title="My Project" class="md-header-nav__button md-logo" aria-label="My Project">
+    <a href=".." title="pyTruthTable" class="md-header-nav__button md-logo" aria-label="pyTruthTable">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -72,7 +81,7 @@
       
         <div class="md-header-nav__ellipsis">
           <span class="md-header-nav__topic md-ellipsis">
-            My Project
+            pyTruthTable
           </span>
           <span class="md-header-nav__topic md-ellipsis">
             
@@ -133,13 +142,13 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="My Project" class="md-nav__button md-logo" aria-label="My Project">
+    <a href=".." title="pyTruthTable" class="md-nav__button md-logo" aria-label="pyTruthTable">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
 
     </a>
-    My Project
+    pyTruthTable
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -207,6 +216,20 @@
   
     <nav class="md-nav" aria-label="PyTruthTable">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set_default_spacing" class="md-nav__link">
+    set_default_spacing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set_no_spacing" class="md-nav__link">
+    set_no_spacing
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#set_default_symbols" class="md-nav__link">
@@ -284,6 +307,20 @@
   
     <nav class="md-nav" aria-label="PyTruthTable">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set_default_spacing" class="md-nav__link">
+    set_default_spacing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set_no_spacing" class="md-nav__link">
+    set_no_spacing
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#set_default_symbols" class="md-nav__link">
@@ -413,82 +450,24 @@ t_table.table_df
 </tbody>
 </table>
 <hr />
-<p><a name=".pyTruthTable.pyTruthTable.PyTruthTable.set_default_symbols"></a></p>
-<h4 id="set_default_symbols">set_default_symbols</h4>
-<pre><code class="python"> | set_default_symbols()
+<p><a name=".pyTruthTable.pyTruthTable.PyTruthTable.set_default_spacing"></a></p>
+<h4 id="set_default_spacing">set_default_spacing</h4>
+<pre><code class="python"> | set_default_spacing()
 </code></pre>
 
-<p>Name the new column using the default symbols.</p>
-<p>i.e: When using <code>and</code> operation your new column will be called <code>A ^ B</code>.</p>
-<table>
-<thead>
-<tr>
-<th>Operation</th>
-<th>Text</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>implies</td>
-<td>"implies"</td>
-</tr>
-<tr>
-<td>nimplies</td>
-<td>"not implies"</td>
-</tr>
-<tr>
-<td>converse</td>
-<td>"converse"</td>
-</tr>
-<tr>
-<td>nconverse</td>
-<td>"not converse"</td>
-</tr>
-<tr>
-<td>not</td>
-<td>"not"</td>
-</tr>
-<tr>
-<td>and</td>
-<td>"and",</td>
-</tr>
-<tr>
-<td>or</td>
-<td>"or"</td>
-</tr>
-<tr>
-<td>nor</td>
-<td>"nor"</td>
-</tr>
-<tr>
-<td>xor</td>
-<td>"xor"</td>
-</tr>
-<tr>
-<td>xnor</td>
-<td>"xnor"</td>
-</tr>
-<tr>
-<td>nand</td>
-<td>"nand"</td>
-</tr>
-<tr>
-<td>equals</td>
-<td>"equals"</td>
-</tr>
-<tr>
-<td>nequals</td>
-<td>"not equals"</td>
-</tr>
-</tbody>
-</table>
-<p>Example 1:</p>
-<pre><code class="python">df = pd.DataFrame([A])
+<p>By default, all symbols are spaced from the variable name.</p>
+<hr />
+<p><a name=".pyTruthTable.pyTruthTable.PyTruthTable.set_no_spacing"></a></p>
+<h4 id="set_no_spacing">set_no_spacing</h4>
+<pre><code class="python"> | set_no_spacing()
+</code></pre>
 
-t_table = ptt.PyTruthTable(df=df)
+<p>Remove spaces from column's name. By default, all symbols are spaced from the variable name.</p>
+<p><strong>Examples</strong>:</p>
+<pre><code class="python">t_table = ptt.PyTruthTable([&quot;A&quot;])
 
 t_table.append(&quot;or&quot;, 0, 0)   # Simple 'or' operation
-t_table.set_text_symbols()   # Change to text
+t_table.set_no_spacing()             # Remove spaces
 t_table.append(&quot;or&quot;, 0, 0)   # Same 'or' operation
 
 t_table.table_df
@@ -499,7 +478,7 @@ t_table.table_df
 <tr>
 <th align="right">A</th>
 <th align="right">A v A</th>
-<th align="right">A or A</th>
+<th align="right">AvA</th>
 </tr>
 </thead>
 <tbody>
@@ -512,6 +491,76 @@ t_table.table_df
 <td align="right">False</td>
 <td align="right">False</td>
 <td align="right">False</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><a name=".pyTruthTable.pyTruthTable.PyTruthTable.set_default_symbols"></a></p>
+<h4 id="set_default_symbols">set_default_symbols</h4>
+<pre><code class="python"> | set_default_symbols()
+</code></pre>
+
+<p>Name the new column using the default symbols.</p>
+<p>Notice that some operations does not contain symbols because they are a combination of other symbols.</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Symbol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>implies</td>
+<td>"→"</td>
+</tr>
+<tr>
+<td>nimplies</td>
+<td>"↛"</td>
+</tr>
+<tr>
+<td>converse</td>
+<td>"←"</td>
+</tr>
+<tr>
+<td>nconverse</td>
+<td>"↚"</td>
+</tr>
+<tr>
+<td>not</td>
+<td>"¬"</td>
+</tr>
+<tr>
+<td>and</td>
+<td>"^"</td>
+</tr>
+<tr>
+<td>or</td>
+<td>"v"</td>
+</tr>
+<tr>
+<td>nor</td>
+<td>""</td>
+</tr>
+<tr>
+<td>xor</td>
+<td>"⊕"</td>
+</tr>
+<tr>
+<td>xnor</td>
+<td>""</td>
+</tr>
+<tr>
+<td>nand</td>
+<td>""</td>
+</tr>
+<tr>
+<td>equals</td>
+<td>"↔"</td>
+</tr>
+<tr>
+<td>nequals</td>
+<td>"↮"</td>
 </tr>
 </tbody>
 </table>
@@ -585,7 +634,7 @@ t_table.table_df
 </tr>
 </tbody>
 </table>
-<p>Example 1:</p>
+<p><strong>Examples</strong>:</p>
 <pre><code class="python">df = pd.DataFrame([A])
 
 t_table = ptt.PyTruthTable(df=df)
@@ -631,7 +680,7 @@ t_table.table_df
 </ul>
 <p><strong>Returns</strong>:</p>
 <p>A dataframe with a binary combination using the list <code>names</code> .</p>
-<p>Example 1:</p>
+<p>Example:</p>
 <pre><code class="python">t_table = ptt.PyTruthTable()
 t_table.generator([&quot;First&quot;, &quot;Second&quot;])
 </code></pre>
@@ -662,7 +711,6 @@ t_table.generator([&quot;First&quot;, &quot;Second&quot;])
 </tr>
 </tbody>
 </table>
-<p>Example 2:</p>
 <pre><code class="python">t_table = ptt.PyTruthTable()
 t_table.generator([&quot;First&quot;, &quot;Second&quot;, &quot;Third&quot;])
 </code></pre>
