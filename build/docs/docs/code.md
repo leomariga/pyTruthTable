@@ -47,6 +47,46 @@ t_table.table_df
 
 ---
 
+<a name=".pyTruthTable.pyTruthTable.PyTruthTable.set_default_spacing"></a>
+#### set\_default\_spacing
+
+```python
+ | set_default_spacing()
+```
+
+By default, all symbols are spaced from the variable name.
+
+---
+
+<a name=".pyTruthTable.pyTruthTable.PyTruthTable.set_no_spacing"></a>
+#### set\_no\_spacing
+
+```python
+ | set_no_spacing()
+```
+
+Remove spaces from column's name. By default, all symbols are spaced from the variable name.
+
+**Examples**:
+
+  
+``` python
+t_table = ptt.PyTruthTable(["A"])
+
+t_table.append("or", 0, 0)   # Simple 'or' operation
+t_table.set_no_spacing()             # Remove spaces
+t_table.append("or", 0, 0)   # Same 'or' operation
+
+t_table.table_df
+```
+  
+  |     A | A v A |   AvA |
+  |------:|------:|------:|
+  | True  | True  | True  |
+  | False | False | False |
+  
+  ---
+
 <a name=".pyTruthTable.pyTruthTable.PyTruthTable.set_default_symbols"></a>
 #### set\_default\_symbols
 
@@ -56,42 +96,23 @@ t_table.table_df
 
 Name the new column using the default symbols.
 
-i.e: When using `and` operation your new column will be called `A ^ B`.
+Notice that some operations does not contain symbols because they are a combination of other symbols.
 
-| Operation | Text           |
-|-----------|----------------|
-| implies   | "implies"      |
-| nimplies  | "not implies"  |
-| converse  | "converse"     |
-| nconverse | "not converse" |
-| not       | "not"          |
-| and       | "and",         |
-| or        | "or"           |
-| nor       | "nor"          |
-| xor       | "xor"          |
-| xnor      | "xnor"         |
-| nand      | "nand"         |
-| equals    | "equals"       |
-| nequals   | "not equals"   |
-
-Example 1:
-
-``` python
-df = pd.DataFrame([A])
-
-t_table = ptt.PyTruthTable(df=df)
-
-t_table.append("or", 0, 0)   # Simple 'or' operation
-t_table.set_text_symbols()   # Change to text
-t_table.append("or", 0, 0)   # Same 'or' operation
-
-t_table.table_df
-```
-
-|     A | A v A | A or A |
-|------:|------:|-------:|
-| True  | True  | True   |
-| False | False | False  |
+| Operation | Symbol |
+|-----------|--------|
+| implies   | "→"    |
+| nimplies  | "↛"    |
+| converse  | "←"    |
+| nconverse | "↚"    |
+| not       | "¬"    |
+| and       | "^"    |
+| or        | "v"    |
+| nor       | ""     |
+| xor       | "⊕"    |
+| xnor      | ""     |
+| nand      | ""     |
+| equals    | "↔"    |
+| nequals   | "↮"    |
 
 ---
 
@@ -122,8 +143,9 @@ i.e: When using `and` operation your new column will be called `A and B` instead
 | equals    | "equals"       |
 | nequals   | "not equals"   |
 
-Example 1:
+**Examples**:
 
+  
 ``` python
 df = pd.DataFrame([A])
 
@@ -135,13 +157,13 @@ t_table.append("or", 0, 0)   # Same 'or' operation
 
 t_table.table_df
 ```
-
-|     A | A v A | A or A |
-|------:|------:|-------:|
-| True  | True  | True   |
-| False | False | False  |
-
----
+  
+  |     A | A v A | A or A |
+  |------:|------:|-------:|
+  | True  | True  | True   |
+  | False | False | False  |
+  
+  ---
 
 <a name=".pyTruthTable.pyTruthTable.PyTruthTable.generator"></a>
 #### generator
@@ -160,7 +182,7 @@ Generate a combination of `True` and `False` columns given a list of `names`.
 
 A dataframe with a binary combination using the list `names` .
 
-Example 1:
+Example:
 
 ``` python
 t_table = ptt.PyTruthTable()
@@ -174,7 +196,6 @@ t_table.generator(["First", "Second"])
 | False | True   |
 | False | False  |
 
-Example 2:
 
 ``` python
 t_table = ptt.PyTruthTable()

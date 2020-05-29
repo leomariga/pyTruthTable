@@ -3,4 +3,8 @@ nav:
 - Home: index.md
 - Code: code.md
 site_name: pyTruthTable
-theme: material
+theme:
+  name: material
+  palette:
+    accent: black
+    primary: black

@@ -14,4 +14,9 @@ renderer:
       contents:
         - pyTruthTable.*
   mkdocs_config:
-    theme: material
+    site_name: pyTruthTable
+    theme:
+      name: material
+      palette:
+        primary: black
+        accent: black

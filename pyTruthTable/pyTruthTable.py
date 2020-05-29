@@ -53,51 +53,60 @@ class PyTruthTable:
                 raise UserWarning('Initial dataframe already specified, ignoring list of names.')
 
     def set_default_spacing(self):
+        """ 
+        By default, all symbols are spaced from the variable name.
+
+        ---
+        """
         self.spacing = " "
 
+
     def set_no_spacing(self):
+        """ 
+        Remove spaces from column's name. By default, all symbols are spaced from the variable name.
+
+        Example:
+
+        ``` python
+        t_table = ptt.PyTruthTable(["A"])
+
+        t_table.append("or", 0, 0)   # Simple 'or' operation
+        t_table.set_no_spacing()             # Remove spaces
+        t_table.append("or", 0, 0)   # Same 'or' operation
+
+        t_table.table_df
+        ```
+            
+        |     A | A v A |   AvA |
+        |------:|------:|------:|
+        | True  | True  | True  |
+        | False | False | False |
+
+        ---
+        """
         self.spacing = ""
 
     def set_default_symbols(self):
         """ 
         Name the new column using the default symbols.
 
-        i.e: When using `and` operation your new column will be called `A ^ B`.
+        Notice that some operations does not contain symbols because they are a combination of other symbols.
 
-        | Operation | Text           |
-        |-----------|----------------|
-        | implies   | "implies"      |
-        | nimplies  | "not implies"  |
-        | converse  | "converse"     |
-        | nconverse | "not converse" |
-        | not       | "not"          |
-        | and       | "and",         |
-        | or        | "or"           |
-        | nor       | "nor"          |
-        | xor       | "xor"          |
-        | xnor      | "xnor"         |
-        | nand      | "nand"         |
-        | equals    | "equals"       |
-        | nequals   | "not equals"   |
-
-        Example 1:
-      
-        ``` python
-        df = pd.DataFrame([A])
-
-        t_table = ptt.PyTruthTable(df=df)
-
-        t_table.append("or", 0, 0)   # Simple 'or' operation
-        t_table.set_text_symbols()   # Change to text
-        t_table.append("or", 0, 0)   # Same 'or' operation
-
-        t_table.table_df
-        ```
-            
-        |     A | A v A | A or A |
-        |------:|------:|-------:|
-        | True  | True  | True   |
-        | False | False | False  |
+        | Operation | Symbol |
+        |-----------|--------|
+        | implies   | "→"    |
+        | nimplies  | "↛"    |
+        | converse  | "←"    |
+        | nconverse | "↚"    |
+        | not       | "¬"    |
+        | and       | "^"    |
+        | or        | "v"    |
+        | nor       | ""     |
+        | xor       | "⊕"    |
+        | xnor      | ""     |
+        | nand      | ""     |
+        | equals    | "↔"    |
+        | nequals   | "↮"    |
 
         ---
         """
@@ -116,6 +125,7 @@ class PyTruthTable:
                         "equals" : "↔",
                         "nequals" : "↮"
                         }
+
 
     def set_text_symbols(self):
         """ 
@@ -139,7 +149,7 @@ class PyTruthTable:
         | equals    | "equals"       |
         | nequals   | "not equals"   |
 
-        Example 1:
+        Example:
       
         ``` python
         df = pd.DataFrame([A])
@@ -184,37 +194,36 @@ class PyTruthTable:
         :param names: Name of the columns.
         :returns:  A dataframe with a binary combination using the list `names` .
 
-        Example 1:
+        Example:
       
-            ``` python
-            t_table = ptt.PyTruthTable()
-            t_table.generator(["First", "Second"])
-            ```
-            
-            | First | Second |
-            |------:|-------:|
-            | True  | True   |
-            | True  | False  |
-            | False | True   |
-            | False | False  |
+        ``` python
+        t_table = ptt.PyTruthTable()
+        t_table.generator(["First", "Second"])
+        ```
+        
+        | First | Second |
+        |------:|-------:|
+        | True  | True   |
+        | True  | False  |
+        | False | True   |
+        | False | False  |
 
-        Example 2:
       
-            ``` python
-            t_table = ptt.PyTruthTable()
-            t_table.generator(["First", "Second", "Third"])
-            ```
-            
-            | First | Second | Third |
-            |------:|-------:|------:|
-            | True  | True   | True  |
-            | True  | True   | False |
-            | True  | False  | True  |
-            | True  | False  | False |
-            | False | True   | True  |
-            | False | True   | False |
-            | False | False  | True  |
-            | False | False  | False |
+        ``` python
+        t_table = ptt.PyTruthTable()
+        t_table.generator(["First", "Second", "Third"])
+        ```
+        
+        | First | Second | Third |
+        |------:|-------:|------:|
+        | True  | True   | True  |
+        | True  | True   | False |
+        | True  | False  | True  |
+        | True  | False  | False |
+        | False | True   | True  |
+        | False | True   | False |
+        | False | False  | True  |
+        | False | False  | False |
 
         ---
         """
@@ -224,48 +233,48 @@ class PyTruthTable:
             ddf = ddf.rename(columns={i: names[i]})
         return ddf
 
-    # If the sentence is long, put parenthesis
+    
     def p(self, st):               # Put parenthesis if necessary
         if(len(st) >1):
             st = "("+ st +")"
         return st
 
-    # Uses the implication definition for logical implies
+    
     def implies(self, a, b):       # Definition of implication
         return (~a) | b
 
     def nimplies(self, a, b):       # Definition of implication
         return a & (~b)
 
-    # Adds a new collumn in a pandas' dataframe with "a implies b"
+    
     def l_implies(self, a, b, nomecoluna): # input the name of the column or the index
         if(nomecoluna==""):
             nomecoluna = self.p(self.table_df.columns[a]) + self.spacing + self.symbols["implies"] + self.spacing + self.p(self.table_df.columns[b])
 
         return pd.DataFrame({nomecoluna:self.implies(self.table_df.iloc[:,a], self.table_df.iloc[:,b])})
 
-    # Adds a new collumn in a pandas' dataframe with "a nimplies b"
+    
     def l_nimplies(self, a, b, nomecoluna): # input the name of the column or the index
         if(nomecoluna==""):
             nomecoluna = self.p(self.table_df.columns[a]) + self.spacing + self.symbols["nimplies"] + self.spacing + self.p(self.table_df.columns[b])
 
         return pd.DataFrame({nomecoluna:self.nimplies(self.table_df.iloc[:,a], self.table_df.iloc[:,b])})
 
-    # Adds a new collumn in a pandas' dataframe with "not a"
+    
     def l_not(self, a, nomecoluna):        # input the name of the column or the index
         if(nomecoluna==""):
             nomecoluna = self.symbols["not"] + self.spacing+ self.p(self.table_df.columns[a])
 
         return pd.DataFrame({nomecoluna:(~self.table_df.iloc[:,a])})
 
-    # Adds a new collumn in a pandas' dataframe with "a and b"
+    
     def l_and(self, a, b, nomecoluna):     # input the name of the column or the index
         if(nomecoluna==""):
             nomecoluna = self.p(self.table_df.columns[a])+ self.spacing + self.symbols["and"] + self.spacing + self.p(self.table_df.columns[b])
 
         return pd.DataFrame({nomecoluna:(self.table_df.iloc[:,a] & self.table_df.iloc[:,b])})
 
-        # Adds a new collumn in a pandas' dataframe with "a and b"
+    
     def l_nand(self, a, b, nomecoluna):     # input the name of the column or the index
         if(nomecoluna==""):
             if(self.symbols["nand"] == ""):
@@ -274,14 +283,14 @@ class PyTruthTable:
                 nomecoluna = self.p(self.table_df.columns[a])+ self.spacing + self.symbols["nand"] + self.spacing + self.p(self.table_df.columns[b])
         return pd.DataFrame({nomecoluna:~(self.table_df.iloc[:,a] & self.table_df.iloc[:,b])})
 
-    # Adds a new collumn in a pandas' dataframe with "a or b"
+    
     def l_or(self, a, b, nomecoluna):      # input the name of the column or the index
         if(nomecoluna==""):
             nomecoluna = self.p(self.table_df.columns[a])+ self.spacing + self.symbols["or"] + self.spacing + self.p(self.table_df.columns[b])
 
         return pd.DataFrame({nomecoluna:(self.table_df.iloc[:,a] | self.table_df.iloc[:,b])})
 
-    # Adds a new collumn in a pandas' dataframe with "a nor b"
+    
     def l_nor(self, a, b, nomecoluna):      # input the name of the column or the index
         if(nomecoluna==""):
             if(self.symbols["nor"] == ""):
@@ -291,14 +300,14 @@ class PyTruthTable:
 
         return pd.DataFrame({nomecoluna:~(self.table_df.iloc[:,a] | self.table_df.iloc[:,b])})
 
-        # Adds a new collumn in a pandas' dataframe with "a xor b"
+    
     def l_xor(self, a, b, nomecoluna):      # input the name of the column or the index
         if(nomecoluna==""):
             nomecoluna = self.p(self.table_df.columns[a])+ self.spacing + self.symbols["xor"] + self.spacing + self.p(self.table_df.columns[b])
 
         return pd.DataFrame({nomecoluna:(self.table_df.iloc[:,a] ^ self.table_df.iloc[:,b])})
 
-    # Adds a new collumn in a pandas' dataframe with "a xor b"
+    
     def l_xnor(self, a, b, nomecoluna):      # input the name of the column or the index
         if(nomecoluna==""):
             if(self.symbols["xnor"] == ""):
@@ -308,7 +317,7 @@ class PyTruthTable:
 
         return pd.DataFrame({nomecoluna:~(self.table_df.iloc[:,a] ^ self.table_df.iloc[:,b])})
 
-    # Adds a new collumn in a pandas' dataframe with "a equals b"
+    
     def l_equals(self, a, b, nomecoluna):      # input the name of the column or the index
         if(nomecoluna==""):
             nomecoluna = self.p(self.table_df.columns[a])+ self.spacing + self.symbols["equals"] + self.spacing + self.p(self.table_df.columns[b])
@@ -319,19 +328,19 @@ class PyTruthTable:
             nomecoluna = self.p(self.table_df.columns[a])+ self.spacing + self.symbols["nequals"] + self.spacing + self.p(self.table_df.columns[b])
         return pd.DataFrame({nomecoluna:~(self.table_df.iloc[:,a] == self.table_df.iloc[:,b])})
 
-    # Adds a new collumn in a pandas' dataframe with "a equals b"
+    
     def l_converse(self, a, b, nomecoluna):      # input the name of the column or the index
         if(nomecoluna==""):
             nomecoluna = self.p(self.table_df.columns[a])+ self.spacing + self.symbols["converse"] + self.spacing + self.p(self.table_df.columns[b])
         return pd.DataFrame({nomecoluna:self.implies(self.table_df.iloc[:,b], self.table_df.iloc[:,a])})
 
-        # Adds a new collumn in a pandas' dataframe with "a equals b"
+        
     def l_nconverse(self, a, b, nomecoluna):      # input the name of the column or the index
         if(nomecoluna==""):
             nomecoluna = self.p(self.table_df.columns[a])+ self.spacing + self.symbols["nconverse"] + self.spacing + self.p(self.table_df.columns[b])
         return pd.DataFrame({nomecoluna:self.nimplies(self.table_df.iloc[:,b], self.table_df.iloc[:,a])})
 
-    # Append and return the dataframe with the operation
+    
     def append(self, operation, a_in, b_in="", newcolumn_name=""):
         a = ""
         b = ""
