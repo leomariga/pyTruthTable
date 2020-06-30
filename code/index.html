@@ -169,6 +169,18 @@
       
       
 
+
+  <li class="md-nav__item">
+    <a href="../operations/" title="Operations" class="md-nav__link">
+      Operations
+    </a>
+  </li>
+
+    
+      
+      
+      
+
   
 
 
@@ -283,6 +295,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#pytruthtablegraph" class="md-nav__link">
+    pyTruthTable.Graph
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -392,6 +411,13 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pytruthtablegraph" class="md-nav__link">
+    pyTruthTable.Graph
+  </a>
   
 </li>
       
@@ -811,11 +837,11 @@ t_table.generator([&quot;First&quot;, &quot;Second&quot;, &quot;Third&quot;])
 <hr />
 <p><a name=".pyTruthTable.pyTruthTable.PyTruthTable.append"></a></p>
 <h4 id="append">append</h4>
-<pre><code class="python"> | append(operation, a_in, b_in=&quot;&quot;, newcolumn_name=&quot;&quot;)
+<pre><code class="python"> | append(operation, a_in, b_in=&quot;&quot;, name=&quot;&quot;)
 </code></pre>
 
 <p>Make a logical <code>operation</code> with column <code>a_in</code> and <code>b_in</code>. The new column will automatically append to the main dataframe.
-The new column name can be specified with <code>newcolumn_name</code>.</p>
+The new column name can be specified with <code>name</code>.</p>
 <p><code>a_in</code> and <code>b_in</code> can be either a column name or number.</p>
 <p><strong>Arguments</strong>:</p>
 <ul>
@@ -848,11 +874,11 @@ The new column name can be specified with <code>newcolumn_name</code>.</p>
 <hr />
 <p><a name=".pyTruthTable.pyTruthTable.PyTruthTable.column"></a></p>
 <h4 id="column">column</h4>
-<pre><code class="python"> | column(operation, a_in, b_in=&quot;&quot;, newcolumn_name=&quot;&quot;)
+<pre><code class="python"> | column(operation, a_in, b_in=&quot;&quot;, name=&quot;&quot;)
 </code></pre>
 
 <p>Return a column of logical <code>operation</code> with column <code>a_in</code> and <code>b_in</code>. The new column will NOT append to the main dataframe.
-The new column name can be specified with <code>newcolumn_name</code>.</p>
+The new column name can be specified with <code>name</code>.</p>
 <p><code>a_in</code> and <code>b_in</code> can be either a column name or number.</p>
 <p><strong>Arguments</strong>:</p>
 <ul>
@@ -867,6 +893,8 @@ The new column name can be specified with <code>newcolumn_name</code>.</p>
 <li><code>ValueError</code>: The operation needs <code>b_in</code> to also be specified</li>
 </ul>
 <hr />
+<p><a name=".pyTruthTable.Graph"></a></p>
+<h2 id="pytruthtablegraph">pyTruthTable.Graph</h2>
                 
               
               
@@ -885,7 +913,7 @@ The new column name can be specified with <code>newcolumn_name</code>.</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href=".." title="Home" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../operations/" title="Operations" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -894,7 +922,7 @@ The new column name can be specified with <code>newcolumn_name</code>.</p>
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Home
+                Operations
               </div>
             </div>
           </a>
