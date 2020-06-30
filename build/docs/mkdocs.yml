@@ -1,6 +1,7 @@
 docs_dir: docs
 nav:
 - Home: index.md
+- Operations: operations.md
 - Code: code.md
 site_name: pyTruthTable
 theme:

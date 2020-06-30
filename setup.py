@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pyTruthTable", # Replace with your own username
-    version="0.0.1",
+    version="0.0.2",
     author="Leonardo Mariga",
     author_email="leomariga@gmail.com",
-    description="A powerful python tool to create truth tables for logical analysis",
+    description="A python tool for logic clauses analysis and binary operations",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://leomariga.github.io/pyTruthTable/",

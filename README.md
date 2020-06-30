@@ -4,11 +4,10 @@
 
 -----------------
 [![PyPI Latest Release](https://img.shields.io/pypi/v/pyTruthTable.svg?style=for-the-badge)](https://pypi.org/project/pyTruthTable/)
-[![Package Status](https://img.shields.io/pypi/status/pyTruthTable?style=for-the-badge)](https://pypi.org/project/pyTruthTable/)
 [![License](https://img.shields.io/pypi/l/pyTruthTable.svg?style=for-the-badge)](https://github.com/leomariga/pyTruthTable/blob/master/LICENSE)
 
 ## What is pyTruthTable?
-**_pyTruthTable_** is a python library to create logical tables and relations between its elements. It makes possible prepositional logic clauses analysis and  binary operations to be used in classic logical problems.
+**_pyTruthTable_** is a python library to create logical tables and make relations between its elements. It makes possible prepositional logic clauses analysis and  binary operations to be used in classic logical problems.
 
 #### Features:
  - Uses Pandas Dataframe.
@@ -81,7 +80,7 @@ tt.append("implies", 3, "Rains")
 
 
 ## Documentation & other links
- - The [amazing documentation is this Github Ṕage](https://leomariga.github.io/pyTruthTable/).
+ - The [amazing documentation is this Ṕage](https://leomariga.github.io/pyTruthTable/).
  - Source code in the [Github repository](https://github.com/leomariga/pyTruthTable).
  - [Pypi pakage installer](https://pypi.org/project/pyTruthTable/)
 
@@ -91,7 +90,7 @@ tt.append("implies", 3, "Rains")
 
 ## Contributing is awesome!
 
-See [CONTRIBUTING](CONTRIBUTING)
+See [CONTRIBUTING](CONTRIBUTING.md)
 
 
 

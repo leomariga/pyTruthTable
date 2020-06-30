@@ -10,6 +10,8 @@ renderer:
     - title: Home
       name: index
       source: README.md
+    - title: Operations
+      source: doc/operations.md
     - title: Code
       contents:
         - pyTruthTable.*

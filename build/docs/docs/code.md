@@ -219,11 +219,11 @@ t_table.generator(["First", "Second", "Third"])
 #### append
 
 ```python
- | append(operation, a_in, b_in="", newcolumn_name="")
+ | append(operation, a_in, b_in="", name="")
 ```
 
 Make a logical `operation` with column `a_in` and `b_in`. The new column will automatically append to the main dataframe.
-The new column name can be specified with `newcolumn_name`.
+The new column name can be specified with `name`.
 
 `a_in` and `b_in` can be either a column name or number.
 
@@ -266,11 +266,11 @@ Append a custom dataframe to your truth table. The number of rows of `a_datafram
 #### column
 
 ```python
- | column(operation, a_in, b_in="", newcolumn_name="")
+ | column(operation, a_in, b_in="", name="")
 ```
 
 Return a column of logical `operation` with column `a_in` and `b_in`. The new column will NOT append to the main dataframe.
-The new column name can be specified with `newcolumn_name`.
+The new column name can be specified with `name`.
 
 `a_in` and `b_in` can be either a column name or number.
 
@@ -288,4 +288,7 @@ The new column name can be specified with `newcolumn_name`.
 - `ValueError`: The operation needs `b_in` to also be specified
 
 ---
+
+<a name=".pyTruthTable.Graph"></a>
+## pyTruthTable.Graph
 
