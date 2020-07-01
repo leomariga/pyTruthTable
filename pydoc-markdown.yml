@@ -18,6 +18,8 @@ renderer:
   mkdocs_config:
     site_name: pyTruthTable
     theme:
+      logo: "https://raw.githubusercontent.com/leomariga/pyTruthTable/master/doc/icon_black.png"
+      favicon: "https://raw.githubusercontent.com/leomariga/pyTruthTable/master/doc/icon_white.png"
       name: material
       palette:
         primary: black
