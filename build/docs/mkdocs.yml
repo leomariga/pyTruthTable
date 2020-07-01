@@ -5,6 +5,8 @@ nav:
 - Code: code.md
 site_name: pyTruthTable
 theme:
+  favicon: https://pluspng.com/img-png/instagram-png-instagram-png-logo-1455.png
+  logo: https://pluspng.com/img-png/instagram-png-instagram-png-logo-1455.png
   name: material
   palette:
     accent: black

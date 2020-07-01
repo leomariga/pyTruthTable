@@ -289,6 +289,3 @@ The new column name can be specified with `name`.
 
 ---
 
-<a name=".pyTruthTable.Graph"></a>
-## pyTruthTable.Graph
-

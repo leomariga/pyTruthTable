@@ -45,7 +45,7 @@ class PyTruthTable:
 
         self.set_default_symbols()
         self.set_default_spacing()
-        self.table_df = df 
+        self.table_df = df
         if(df.equals(pd.DataFrame())):  
             if(len(names) > 0):
                 self.table_df = self.generator(names)
@@ -236,7 +236,7 @@ class PyTruthTable:
 
     
     def p(self, st):               # Put parenthesis if necessary
-        if(len(st) >1):
+        if(len(st) >3):
             st = "("+ st +")"
         return st
 
@@ -359,10 +359,10 @@ class PyTruthTable:
         return pd.DataFrame({nomecoluna:self.nimplies(self.table_df.iloc[:,b], self.table_df.iloc[:,a])})
 
     
-    def append(self, operation, a_in, b_in="", newcolumn_name=""):
+    def append(self, operation, a_in, b_in="", name=""):
         """ 
         Make a logical `operation` with column `a_in` and `b_in`. The new column will automatically append to the main dataframe. 
-        The new column name can be specified with `newcolumn_name`.
+        The new column name can be specified with `name`.
 
         `a_in` and `b_in` can be either a column name or number.
 
@@ -379,16 +379,18 @@ class PyTruthTable:
         a = ""
         b = ""
         if isinstance(a_in, str):
-            a = self.table_df.columns.get_loc(a_in)
-            if(a == False):
+            if a_in in self.table_df:
+                a = self.table_df.columns.get_loc(a_in)
+            else:
                 raise NameError('First column does not exist.')
         else:
             a = a_in
 
         if(b_in != ""):
             if isinstance(b_in, str):
-                b = self.table_df.columns.get_loc(b_in)
-                if(b == False):
+                if b_in in self.table_df:
+                    b = self.table_df.columns.get_loc(b_in)
+                else:
                     raise NameError('Second column does not exist.')
             else:
                 b = b_in
@@ -398,31 +400,31 @@ class PyTruthTable:
                 raise ValueError('Operation requires a second column to be defined.')
                 
         if(operation == "implies"):
-            self.table_df = self.table_df.join(self.l_implies(a, b, newcolumn_name))
+            self.table_df = self.table_df.join(self.l_implies(a, b, name))
         elif(operation == "nimplies"):
-            self.table_df = self.table_df.join(self.l_nimplies(a, b, newcolumn_name))
+            self.table_df = self.table_df.join(self.l_nimplies(a, b, name))
         elif(operation == "converse"):
-            self.table_df = self.table_df.join(self.l_converse(a, b, newcolumn_name))
+            self.table_df = self.table_df.join(self.l_converse(a, b, name))
         elif(operation == "nconverse"):
-            self.table_df = self.table_df.join(self.l_nconverse(a, b, newcolumn_name))
+            self.table_df = self.table_df.join(self.l_nconverse(a, b, name))
         elif(operation == "not"):
-            self.table_df = self.table_df.join(self.l_not(a, newcolumn_name))
+            self.table_df = self.table_df.join(self.l_not(a, name))
         elif(operation == "and"):
-            self.table_df = self.table_df.join(self.l_and(a, b, newcolumn_name))
+            self.table_df = self.table_df.join(self.l_and(a, b, name))
         elif(operation == "or"):
-            self.table_df = self.table_df.join(self.l_or(a, b, newcolumn_name))
+            self.table_df = self.table_df.join(self.l_or(a, b, name))
         elif(operation == "nor"):
-            self.table_df = self.table_df.join(self.l_nor(a, b, newcolumn_name))
+            self.table_df = self.table_df.join(self.l_nor(a, b, name))
         elif(operation == "xor"):
-            self.table_df = self.table_df.join(self.l_xor(a, b, newcolumn_name))
+            self.table_df = self.table_df.join(self.l_xor(a, b, name))
         elif(operation == "xnor"):
-            self.table_df = self.table_df.join(self.l_xnor(a, b, newcolumn_name))
+            self.table_df = self.table_df.join(self.l_xnor(a, b, name))
         elif(operation == "nand"):
-            self.table_df = self.table_df.join(self.l_nand(a, b, newcolumn_name))
+            self.table_df = self.table_df.join(self.l_nand(a, b, name))
         elif(operation == "equals"):
-            self.table_df = self.table_df.join(self.l_equals(a, b, newcolumn_name))
+            self.table_df = self.table_df.join(self.l_equals(a, b, name))
         elif(operation == "nequals"):
-            self.table_df = self.table_df.join(self.l_nequals(a, b, newcolumn_name))
+            self.table_df = self.table_df.join(self.l_nequals(a, b, name))
         else:
             raise NameError('Operation does not exist.')
         return self.table_df
@@ -448,10 +450,10 @@ class PyTruthTable:
             raise TypeError('The parameter should be a dataframe')
 
 
-    def column(self, operation, a_in, b_in="", newcolumn_name=""):
+    def column(self, operation, a_in, b_in="", name=""):
         """ 
         Return a column of logical `operation` with column `a_in` and `b_in`. The new column will NOT append to the main dataframe. 
-        The new column name can be specified with `newcolumn_name`.
+        The new column name can be specified with `name`.
 
         `a_in` and `b_in` can be either a column name or number.
 
@@ -468,16 +470,18 @@ class PyTruthTable:
         a = ""
         b = ""
         if isinstance(a_in, str):
-            a = self.table_df.columns.get_loc(a_in)
-            if(a == False):
+            if a_in in self.table_df:
+                a = self.table_df.columns.get_loc(a_in)
+            else:
                 raise NameError('First column does not exist.')
         else:
             a = a_in
 
         if(b_in != ""):
             if isinstance(b_in, str):
-                b = self.table_df.columns.get_loc(b_in)
-                if(b == False):
+                if b_in in self.table_df:
+                    b = self.table_df.columns.get_loc(b_in)
+                else:
                     raise NameError('Second column does not exist.')
             else:
                 b = b_in
@@ -487,30 +491,30 @@ class PyTruthTable:
                 raise ValueError('Operation requires a second column to be defined.')
 
         if(operation == "implies"):
-            return self.l_implies(a, b, newcolumn_name)
+            return self.l_implies(a, b, name)
         elif(operation == "nimplies"):
-            return self.l_nimplies(a, b, newcolumn_name)
+            return self.l_nimplies(a, b, name)
         elif(operation == "converse"):
-            return self.l_converse(a, b, newcolumn_name)
+            return self.l_converse(a, b, name)
         elif(operation == "nconverse"):
-            return self.l_nconverse(a, b, newcolumn_name)
+            return self.l_nconverse(a, b, name)
         elif(operation == "not"):
-            return self.l_not(a, newcolumn_name)
+            return self.l_not(a, name)
         elif(operation == "and"):
-            return self.l_and(a, b, newcolumn_name)
+            return self.l_and(a, b, name)
         elif(operation == "or"):
-            return self.l_or(a, b, newcolumn_name)
+            return self.l_or(a, b, name)
         elif(operation == "nor"):
-            return self.l_nor(a, b, newcolumn_name)
+            return self.l_nor(a, b, name)
         elif(operation == "xor"):
-            return self.l_xor(a, b, newcolumn_name)
+            return self.l_xor(a, b, name)
         elif(operation == "xnor"):
-            return self.l_xor(a, b, newcolumn_name)
+            return self.l_xor(a, b, name)
         elif(operation == "nand"):
-            return self.l_nand(a, b, newcolumn_name)
+            return self.l_nand(a, b, name)
         elif(operation == "equals"):
-            return self.l_equals(a, b, newcolumn_name)
+            return self.l_equals(a, b, name)
         elif(operation == "nequals"):
-            return self.l_nequals(a, b, newcolumn_name)
+            return self.l_nequals(a, b, name)
         else:
             raise NameError('Operation does not exist.')

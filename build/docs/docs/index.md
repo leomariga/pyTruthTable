@@ -80,7 +80,7 @@ tt.append("implies", 3, "Rains")
 
 
 ## Documentation & other links
- - The [amazing documentation is this Github Ṕage](https://leomariga.github.io/pyTruthTable/).
+ - The [amazing documentation is this Ṕage](https://leomariga.github.io/pyTruthTable/).
  - Source code in the [Github repository](https://github.com/leomariga/pyTruthTable).
  - [Pypi pakage installer](https://pypi.org/project/pyTruthTable/)
 
