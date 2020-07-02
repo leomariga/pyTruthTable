@@ -1,11 +1,22 @@
 docs_dir: docs
+markdown_extensions:
+- admonition
+- codehilite:
+    guess_lang: false
+- toc:
+    permalink: true
 nav:
 - Home: index.md
+- Getting started: getting-started.md
 - Operations: operations.md
 - Code: code.md
+- Contributing: contributing.md
+- License: license.md
+repo_name: leomariga/pyTruthTable
+repo_url: https://github.com/leomariga/pyTruthTable
 site_name: pyTruthTable
 theme:
-  favicon: https://raw.githubusercontent.com/leomariga/pyTruthTable/master/doc/icon_white.png
+  favicon: https://raw.githubusercontent.com/leomariga/pyTruthTable/master/doc/icon_black.png
   logo: https://raw.githubusercontent.com/leomariga/pyTruthTable/master/doc/icon_white.png
   name: material
   palette:

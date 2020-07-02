@@ -10,17 +10,31 @@ renderer:
     - title: Home
       name: index
       source: README.md
+    - title: Getting started
+      source: doc/getstart.md
     - title: Operations
       source: doc/operations.md
     - title: Code
       contents:
         - pyTruthTable.*
+    - title: Contributing
+      source: CONTRIBUTING.md
+    - title: License
+      source: LICENSE
   mkdocs_config:
     site_name: pyTruthTable
+    repo_name: leomariga/pyTruthTable
+    repo_url: https://github.com/leomariga/pyTruthTable
     theme:
-      logo: "https://raw.githubusercontent.com/leomariga/pyTruthTable/master/doc/icon_black.png"
-      favicon: "https://raw.githubusercontent.com/leomariga/pyTruthTable/master/doc/icon_white.png"
+      logo: "https://raw.githubusercontent.com/leomariga/pyTruthTable/master/doc/icon_white.png"
+      favicon: "https://raw.githubusercontent.com/leomariga/pyTruthTable/master/doc/icon_black.png"
       name: material
       palette:
         primary: black
         accent: black
+    markdown_extensions:
+      - admonition
+      - codehilite:
+          guess_lang: false
+      - toc:
+          permalink: true

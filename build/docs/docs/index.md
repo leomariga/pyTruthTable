@@ -86,11 +86,11 @@ tt.append("implies", 3, "Rains")
 
 
 ## License
-[MIT](LICENSE)
+[MIT](https://github.com/leomariga/pyTruthTable/blob/master/LICENSE)
 
 ## Contributing is awesome!
 
-See [CONTRIBUTING](CONTRIBUTING.md)
+See [CONTRIBUTING](https://github.com/leomariga/pyTruthTable/blob/master/CONTRIBUTING.md)
 
 
 

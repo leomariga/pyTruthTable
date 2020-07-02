@@ -236,7 +236,7 @@ class PyTruthTable:
 
     
     def p(self, st):               # Put parenthesis if necessary
-        if(len(st) >3):
+        if(len(st) > 1):
             st = "("+ st +")"
         return st
 
